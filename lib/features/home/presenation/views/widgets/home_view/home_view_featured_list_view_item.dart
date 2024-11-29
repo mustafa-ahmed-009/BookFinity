@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/foundation.dart';
 
 class HomeViewFeaturedListViewItem extends StatelessWidget {
   const HomeViewFeaturedListViewItem({super.key});
@@ -9,7 +8,7 @@ class HomeViewFeaturedListViewItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(right: 8),
       child: AspectRatio(
-        aspectRatio: 2.5 / 4,
+        aspectRatio: 2.5 / 3.5,
         child: Container(
           decoration: BoxDecoration(
               color: const Color(0xFF542156),

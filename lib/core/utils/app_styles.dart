@@ -1,67 +1,11 @@
 import 'package:flutter/material.dart';
 
 abstract class AppStyles {
-  static TextStyle styleRegular16(context) {
-    return TextStyle(
-      fontSize: getResponsiveFontSize(context, fontSize: 16),
-      fontFamily: 'GT Sectra Fine',
-      fontWeight: FontWeight.w400,
-    );
-  }
-
-  static TextStyle styleBold16(BuildContext context) {
-    return TextStyle(
-      fontSize: getResponsiveFontSize(context, fontSize: 16),
-      fontFamily: 'GT Sectra Fine',
-      fontWeight: FontWeight.w700,
-    );
-  }
-
-  static TextStyle styleMedium16(BuildContext context) {
-    return TextStyle(
-      fontSize: getResponsiveFontSize(context, fontSize: 16),
-      fontFamily: 'GT Sectra Fine',
-      fontWeight: FontWeight.w500,
-    );
-  }
-
-  static TextStyle styleMedium20(BuildContext context) {
-    return TextStyle(
-      fontSize: getResponsiveFontSize(context, fontSize: 20),
-      fontFamily: 'GT Sectra Fine',
-      fontWeight: FontWeight.w500,
-    );
-  }
-
-  static TextStyle styleSemiBold16(BuildContext context) {
-    return TextStyle(
-      fontSize: getResponsiveFontSize(context, fontSize: 16),
-      fontFamily: 'GT Sectra Fine',
-      fontWeight: FontWeight.w600,
-    );
-  }
-
-  static TextStyle styleSemiBold20(BuildContext context) {
-    return TextStyle(
-      fontSize: getResponsiveFontSize(context, fontSize: 20),
-      fontFamily: 'GT Sectra Fine',
-      fontWeight: FontWeight.w600,
-    );
-  }
-
   static TextStyle styleRegular12(BuildContext context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 12),
       fontFamily: 'GT Sectra Fine',
       fontWeight: FontWeight.w400,
-    );
-  }
-
-  static TextStyle styleSemiBold24(BuildContext context) {
-    return TextStyle(
-      fontSize: getResponsiveFontSize(context, fontSize: 24),
-      fontFamily: 'GT Sectra Fine',
-      fontWeight: FontWeight.w600,
     );
   }
 
@@ -73,9 +17,73 @@ abstract class AppStyles {
     );
   }
 
+  static TextStyle styleRegular16(context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 16),
+      fontFamily: 'GT Sectra Fine',
+      fontWeight: FontWeight.w400,
+    );
+  }
+
+  static TextStyle styleMedium16(BuildContext context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 16),
+      fontFamily: 'GT Sectra Fine',
+      fontWeight: FontWeight.w500,
+    );
+  }
+
+  static TextStyle styleBold16(BuildContext context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 16),
+      fontFamily: 'GT Sectra Fine',
+      fontWeight: FontWeight.w700,
+    );
+  }
+
+  static TextStyle styleSemiBold16(BuildContext context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 16),
+      fontFamily: 'GT Sectra Fine',
+      fontWeight: FontWeight.w600,
+    );
+  }
+
   static TextStyle styleSemiBold18(BuildContext context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 18),
+      fontFamily: 'GT Sectra Fine',
+      fontWeight: FontWeight.w600,
+    );
+  }
+
+  static TextStyle sytleLight20(BuildContext context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 20),
+      fontFamily: 'GT Sectra Fine',
+      fontWeight: FontWeight.w300,
+    );
+  }
+
+  static TextStyle styleMedium20(BuildContext context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 20),
+      fontFamily: 'GT Sectra Fine',
+      fontWeight: FontWeight.w500,
+    );
+  }
+
+  static TextStyle styleSemiBold20(BuildContext context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 20),
+      fontFamily: 'GT Sectra Fine',
+      fontWeight: FontWeight.w600,
+    );
+  }
+
+  static TextStyle styleSemiBold24(BuildContext context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 24),
       fontFamily: 'GT Sectra Fine',
       fontWeight: FontWeight.w600,
     );
@@ -105,7 +113,7 @@ double getScaleFactor(context) {
   if (width < 800) {
     return width / 550;
   } else if (width < 1200) {
-    return width / 1000;
+    return width / 800;
   } else {
     return width / 1920;
   }
