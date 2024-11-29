@@ -1,6 +1,7 @@
 import 'package:bookly/core/app_router.dart';
 import 'package:bookly/core/utils/app_styles.dart';
 import 'package:bookly/features/home/presenation/views/widgets/home_view/home_view_featured_list_view_item.dart';
+import 'package:bookly/features/home/presenation/views/widgets/rating_row.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -44,25 +45,7 @@ class HomeViewGridBuilderItem extends StatelessWidget {
                       r"19.99$",
                       style: AppStyles.styleSemiBold24(context),
                     ),
-                    Row(
-                      children: [
-                        Icon(
-                          Icons.star,
-                          color: Colors.yellow,
-                        ),
-                        SizedBox(
-                          width: 4,
-                        ),
-                        Text("4.8"),
-                        SizedBox(
-                          width: 4,
-                        ),
-                        Text("(231)"),
-                        SizedBox(
-                          width: 4,
-                        ),
-                      ],
-                    ),
+                    RatingRow(),
                   ],
                 ),
                 SizedBox(
@@ -76,3 +59,5 @@ class HomeViewGridBuilderItem extends StatelessWidget {
     );
   }
 }
+
+

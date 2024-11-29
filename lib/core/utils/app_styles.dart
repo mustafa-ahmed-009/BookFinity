@@ -88,6 +88,13 @@ abstract class AppStyles {
       fontWeight: FontWeight.w600,
     );
   }
+    static TextStyle styleSemiBold28(BuildContext context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 28),
+      fontFamily: 'GT Sectra Fine',
+      fontWeight: FontWeight.w600,
+    );
+  }
 }
 
 // sacleFactor
