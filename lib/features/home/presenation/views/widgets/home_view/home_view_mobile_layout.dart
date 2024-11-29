@@ -6,7 +6,7 @@ class HomeViewMobileLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return HomeViewLayoutBody(
+    return const HomeViewLayoutBody(
       crossAxisCount: 1,
       SearchIconSize: 24,
       logoHeight: 24,

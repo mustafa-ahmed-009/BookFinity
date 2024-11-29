@@ -32,12 +32,12 @@ class HomeViewGridBuilderItem extends StatelessWidget {
                   "Fanzhendong vs Truls Morgarid paris olympics finals",
                   style: AppStyles.styleSemiBold24(context),
                 ),
-                Spacer(),
+                const Spacer(),
                 Text(
                   "BookAuthor",
                   style: AppStyles.sytleLight20(context),
                 ),
-                Spacer(),
+                const Spacer(),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -45,10 +45,10 @@ class HomeViewGridBuilderItem extends StatelessWidget {
                       r"19.99$",
                       style: AppStyles.styleSemiBold24(context),
                     ),
-                    RatingRow(),
+                    const RatingRow(),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 )
               ],

@@ -16,7 +16,7 @@ class BookDetailsTwoButtons extends StatelessWidget {
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.white,
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20),
                     bottomLeft: Radius.circular(20),
@@ -26,7 +26,7 @@ class BookDetailsTwoButtons extends StatelessWidget {
               onPressed: () {
                 print("Price button pressed");
               },
-              child: Text(
+              child: const Text(
                 '19.99€',
                 style: TextStyle(
                   color: Colors.black,
@@ -40,7 +40,7 @@ class BookDetailsTwoButtons extends StatelessWidget {
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.orangeAccent,
-                shape: RoundedRectangleBorder(
+                shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
                     topRight: Radius.circular(20),
                     bottomRight: Radius.circular(20),
@@ -50,7 +50,7 @@ class BookDetailsTwoButtons extends StatelessWidget {
               onPressed: () {
                 print("Free Preview button pressed");
               },
-              child: Text(
+              child: const Text(
                 'Free Preview',
                 style: TextStyle(
                   color: Colors.white,

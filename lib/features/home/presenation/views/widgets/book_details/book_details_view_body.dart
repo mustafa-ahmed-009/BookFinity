@@ -10,8 +10,8 @@ class BookDetailsViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AdaptiveLayout(
-        mobileLayout: (context) => BookDetailsPhoneLayout(),
-        tableLayout: (context) => BookDetailsTabletLayout(),
-        desktopLayout: (context) => BookDetailsDesktopLayout());
+        mobileLayout: (context) => const BookDetailsPhoneLayout(),
+        tableLayout: (context) => const BookDetailsTabletLayout(),
+        desktopLayout: (context) => const BookDetailsDesktopLayout());
   }
 }

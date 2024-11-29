@@ -1,3 +1,4 @@
+import 'package:bookly/features/home/presenation/views/widgets/book_details/book_details_layout_body.dart';
 import 'package:flutter/cupertino.dart';
 
 class BookDetailsTabletLayout extends StatelessWidget {
@@ -5,6 +6,6 @@ class BookDetailsTabletLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text("tablet");
+    return const BookDetailsLayoutBody();
   }
 }

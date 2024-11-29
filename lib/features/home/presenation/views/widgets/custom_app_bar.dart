@@ -1,10 +1,13 @@
 import 'package:bookly/constants.dart';
+import 'package:bookly/core/app_router.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key, required this.searchIconSize, required this.logoHeight});
+  const CustomAppBar(
+      {super.key, required this.searchIconSize, required this.logoHeight});
   final double searchIconSize;
-  final double logoHeight ; 
+  final double logoHeight;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -14,10 +17,12 @@ class CustomAppBar extends StatelessWidget {
         children: [
           Image.asset(
             kLogoImage,
-            height:logoHeight ,
+            height: logoHeight,
           ),
           IconButton(
-              onPressed: () {},
+              onPressed: () {
+                GoRouter.of(context).push(AppRouter.kSearchView);
+              },
               icon: Icon(
                 Icons.search,
                 size: searchIconSize,
