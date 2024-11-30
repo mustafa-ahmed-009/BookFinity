@@ -7,8 +7,8 @@ class SearchViewPhoneLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: const Column(
+    return const SafeArea(
+      child: Column(
         children: [
           SearchViewAppBar(),
           Expanded(child: HomeViewGridView(crossAxisCount: 1))

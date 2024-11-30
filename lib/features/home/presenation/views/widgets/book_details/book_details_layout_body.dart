@@ -3,7 +3,6 @@ import 'package:bookly/features/home/presenation/views/widgets/book_details/book
 import 'package:bookly/features/home/presenation/views/widgets/book_details/book_details_two_buttons.dart';
 import 'package:bookly/features/home/presenation/views/widgets/home_view/home_view_featured_list_view_item.dart';
 import 'package:bookly/features/home/presenation/views/widgets/rating_row.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class BookDetailsLayoutBody extends StatelessWidget {

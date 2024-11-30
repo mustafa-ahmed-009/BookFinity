@@ -28,11 +28,11 @@ class SearchViewAppBar extends StatelessWidget {
                   onPressed: () {
                     Navigator.of(context).pop();
                   },
-                  icon: Icon(Icons.arrow_back)),
+                  icon: const Icon(Icons.arrow_back)),
             ),
-            Expanded(
+            const Expanded(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                padding: EdgeInsets.symmetric(horizontal: 12.0),
                 child: TextField(
                   style: TextStyle(color: Colors.white),
                   decoration: InputDecoration(
@@ -44,8 +44,8 @@ class SearchViewAppBar extends StatelessWidget {
               ),
             ),
             // Search Icon
-            Padding(
-              padding: const EdgeInsets.only(right: 12.0),
+            const Padding(
+              padding: EdgeInsets.only(right: 12.0),
               child: Icon(
                 Icons.search,
                 color: Colors.grey, // Icon color
