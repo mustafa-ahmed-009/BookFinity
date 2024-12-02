@@ -1,23 +1,21 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 
 class HomeViewFeaturedListViewItem extends StatelessWidget {
-  const HomeViewFeaturedListViewItem({super.key});
-
+  const HomeViewFeaturedListViewItem({super.key, required this.imageUrl});
+  final String imageUrl;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(right: 8),
       child: AspectRatio(
-        aspectRatio: 2.5 / 3.5,
-        child: Container(
-          decoration: BoxDecoration(
-              color: const Color(0xFF542156),
+          aspectRatio: 2.5 / 3.5,
+          child: ClipRRect(
               borderRadius: BorderRadius.circular(12),
-              image: const DecorationImage(
-                  fit: BoxFit.cover,
-                  image: AssetImage("assets/images/test_image.jpg"))),
-        ),
-      ),
+              child: CachedNetworkImage(
+                imageUrl: imageUrl,
+                fit: BoxFit.fill,
+              ))),
     );
   }
 }

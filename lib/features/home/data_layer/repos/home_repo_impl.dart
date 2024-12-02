@@ -16,36 +16,39 @@ class HomeRepoImpl extends HomeRepo {
   Future<Either<Failure, List<BookEntity>>> fetchFeaturedBooks(
       {int pageNumber = 0}) async {
     try {
-      var booksList = homeLocalDataSource.fetchFeaturedBooks();
+      var booksList = homeLocalDataSource.fetchFeaturedBooks(
+          pageNumber: pageNumber); //local
       if (booksList.isNotEmpty) {
         return right(booksList);
       }
-      var books = await remoteDataSource.fetchFeaturedBooks();
+      var books = await remoteDataSource.fetchFeaturedBooks(
+          pageNumber: pageNumber); // remote
       return right(books);
     } catch (e) {
       if (e is DioException) {
         return left(ServerFailure.fromDiorError(e));
-      } 
-        return left(ServerFailure(e.toString())) ; 
-     
+      }
+      return left(ServerFailure(e.toString()));
     }
   }
 
   @override
-  Future<Either<Failure, List<BookEntity>>> fetchNewestBooks() async {
+  Future<Either<Failure, List<BookEntity>>> fetchNewestBooks(
+      {int pageNumber = 0}) async {
     try {
-      var booksList = homeLocalDataSource.fetchNewestBooks();
+      var booksList =
+          homeLocalDataSource.fetchNewestBooks(pageNumber: pageNumber);
       if (booksList.isNotEmpty) {
         return right(booksList);
       }
-      var books = await remoteDataSource.fetchNewestBooks();
+      var books =
+          await remoteDataSource.fetchNewestBooks(pageNumber: pageNumber);
       return right(books);
     } catch (e) {
-     if (e is DioException) {
+      if (e is DioException) {
         return left(ServerFailure.fromDiorError(e));
-      } 
-        return left(ServerFailure(e.toString())) ; 
-     
+      }
+      return left(ServerFailure(e.toString()));
     }
   }
 }

@@ -31,7 +31,7 @@ class BookDetailsLayoutBody extends StatelessWidget {
             ),
             SizedBox(
               height: MediaQuery.sizeOf(context).height * 0.43,
-              child: const HomeViewFeaturedListViewItem(),
+              child: const HomeViewFeaturedListViewItem(imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0CHljACJAe1iD2ddBPpEV6jEKRnthMWnhcw&s",),
             ),
             Text(
               "The best book ever made  ",
