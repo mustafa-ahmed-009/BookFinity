@@ -28,8 +28,7 @@ class HomeViewGridBuilderItem extends StatelessWidget {
             child: SizedBox(
                 height: MediaQuery.sizeOf(context).height * .25,
                 child: HomeViewFeaturedListViewItem(
-                  imageUrl: book.image ??
-                      "https://ih1.redbubble.net/image.4905811447.8675/flat,750x,075,f-pad,750x1000,f8f8f8.jpg",
+                  book: book,
                 )),
           ),
           Expanded(

@@ -42,7 +42,7 @@ class BookDetailsLayoutBody extends StatelessWidget {
                 SizedBox(
                   height: MediaQuery.sizeOf(context).height * 0.43,
                   child: HomeViewFeaturedListViewItem(
-                    imageUrl: book.image!,
+                   book: book,
                   ),
                 ),
                 Text(
