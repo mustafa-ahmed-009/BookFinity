@@ -2,7 +2,6 @@ import 'package:bookly/core/app_router.dart';
 import 'package:bookly/core/utils/app_styles.dart';
 import 'package:bookly/features/home/domain_layer/entities/book_entity.dart';
 import 'package:bookly/features/home/presenation/manager/cubit/newest_books_cubit.dart';
-import 'package:bookly/features/home/presenation/views/widgets/book_details/book_details_list_view.dart';
 import 'package:bookly/features/home/presenation/views/widgets/book_details/book_details_two_buttons.dart';
 import 'package:bookly/features/home/presenation/views/widgets/home_view/home_view_featured_list_view_item.dart';
 import 'package:bookly/features/home/presenation/views/widgets/rating_row.dart';
@@ -54,7 +53,7 @@ class BookDetailsLayoutBody extends StatelessWidget {
                   book.authorName!,
                   style: AppStyles.styleMedium20(context),
                 ),
-                // const RatingRow(),
+                RatingRow(book: book),
                 const SizedBox(
                   height: 10,
                 ),

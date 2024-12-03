@@ -38,7 +38,7 @@ class HomeViewGridBuilderItem extends StatelessWidget {
               children: [
                 Text(
                   book.title.length > 45
-                      ? book.title.substring(0, 45) + "..."
+                      ? "${book.title.substring(0, 45)}..."
                       : book.title,
                   style: AppStyles.styleSemiBold24(context),
                 ),

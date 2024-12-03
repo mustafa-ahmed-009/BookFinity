@@ -11,25 +11,31 @@ class RatingRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     String realRating = "No Ratings Yet";
+
     if (!(book.rating == null)) {
       realRating = book.rating.toString();
     }
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Icon(
+        const Icon(
           Icons.star,
           color: Colors.yellow,
         ),
-        SizedBox(
+        const SizedBox(
           width: 4,
         ),
-        Text(realRating),
-        SizedBox(
+        Text(
+          realRating,
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+        ),
+        const SizedBox(
           width: 4,
         ),
-        Text(book.ratingCount.toString()),
-        SizedBox(
+        Text(realRating == "No Ratings Yet"
+            ? ""
+            : "(${book.ratingCount.toString()})"),
+        const SizedBox(
           width: 4,
         ),
       ],
