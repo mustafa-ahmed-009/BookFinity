@@ -1,4 +1,5 @@
 import 'package:bookly/core/utils/app_styles.dart';
+import 'package:bookly/features/home/presenation/manager/cubit/featured_books_cubit.dart';
 import 'package:bookly/features/home/presenation/manager/cubit/newest_books_cubit.dart';
 import 'package:bookly/features/home/presenation/views/widgets/custom_app_bar.dart';
 import 'package:bookly/features/home/presenation/views/widgets/home_view/home_view_grid_view_builder.dart';
@@ -30,6 +31,8 @@ class _HomeViewLayoutBodyState extends State<HomeViewLayoutBody> {
   @override
   void initState() {
     super.initState();
+    context.read<NewestBooksCubit>().fetchNewestBooks();
+    context.read<FeaturedBooksCubit>().fetchFeaturedBook();
     _scrollController = ScrollController();
     _scrollController.addListener(_scrollListener);
   }
