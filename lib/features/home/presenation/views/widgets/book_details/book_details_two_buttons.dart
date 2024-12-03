@@ -26,7 +26,7 @@ class BookDetailsTwoButtons extends StatelessWidget {
                 print("Free Preview button pressed");
               },
               child: const Text(
-                'Free Preview',
+                'Click here to preview',
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,

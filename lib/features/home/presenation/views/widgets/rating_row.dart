@@ -1,13 +1,20 @@
+import 'package:bookly/features/home/domain_layer/entities/book_entity.dart';
 import 'package:flutter/material.dart';
 
 class RatingRow extends StatelessWidget {
   const RatingRow({
     super.key,
+    required this.book,
   });
+  final BookEntity book;
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    String realRating = "No Ratings Yet";
+    if (!(book.rating == null)) {
+      realRating = book.rating.toString();
+    }
+    return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Icon(
@@ -17,11 +24,11 @@ class RatingRow extends StatelessWidget {
         SizedBox(
           width: 4,
         ),
-        Text("4.8"),
+        Text(realRating),
         SizedBox(
           width: 4,
         ),
-        Text("(231)"),
+        Text(book.ratingCount.toString()),
         SizedBox(
           width: 4,
         ),

@@ -18,7 +18,7 @@ class HomeViewGridBuilderItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        BlocProvider.of<NewestBooksCubit>(context).bookEntity = book; 
+        BlocProvider.of<NewestBooksCubit>(context).bookEntity = book;
         GoRouter.of(context).push(AppRouter.kBookDetailsView);
       },
       child: Row(
@@ -55,7 +55,9 @@ class HomeViewGridBuilderItem extends StatelessWidget {
                       "Free",
                       style: AppStyles.styleSemiBold24(context),
                     ),
-                    const RatingRow(),
+                    RatingRow(
+                      book: book,
+                    ),
                   ],
                 ),
                 const SizedBox(

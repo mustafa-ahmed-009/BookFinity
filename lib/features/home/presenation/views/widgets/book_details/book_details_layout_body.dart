@@ -21,53 +21,48 @@ class BookDetailsLayoutBody extends StatelessWidget {
         BlocProvider.of<NewestBooksCubit>(context).bookEntity;
 
     return SafeArea(
-      child: Center(
-        child: Column(
-          children: [
-            Row(
+      child: Column(
+        children: [
+          Row(
+            children: [
+              IconButton(
+                onPressed: () {
+                  GoRouter.of(context).pop(AppRouter.kHomeView);
+                },
+                icon: const Icon(Icons.close),
+              ),
+            ],
+          ),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                IconButton(
-                  onPressed: () {
-                    GoRouter.of(context).pop(AppRouter.kHomeView);
-                  },
-                  icon: const Icon(Icons.close),
+                const SizedBox(
+                  height: 5,
                 ),
+                SizedBox(
+                  height: MediaQuery.sizeOf(context).height * 0.43,
+                  child: HomeViewFeaturedListViewItem(
+                    imageUrl: book.image!,
+                  ),
+                ),
+                Text(
+                  book.title,
+                  style: AppStyles.styleSemiBold28(context),
+                ),
+                Text(
+                  book.authorName!,
+                  style: AppStyles.styleMedium20(context),
+                ),
+                // const RatingRow(),
+                const SizedBox(
+                  height: 10,
+                ),
+                const BookDetailsTwoButtons(),
               ],
             ),
-            const SizedBox(
-              height: 5,
-            ),
-            SizedBox(
-              height: MediaQuery.sizeOf(context).height * 0.43,
-              child: HomeViewFeaturedListViewItem(
-                imageUrl: book.image!,
-              ),
-            ),
-            Text(
-              book.title,
-              style: AppStyles.styleSemiBold28(context),
-            ),
-            Text(
-              book.authorName!,
-              style: AppStyles.styleMedium20(context),
-            ),
-            const RatingRow(),
-            const SizedBox(
-              height: 10,
-            ),
-            const BookDetailsTwoButtons(),
-            Align(
-                alignment: Alignment.centerLeft,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    "you can also like this ",
-                    style: AppStyles.styleMedium20(context),
-                  ),
-                )),
-            const BookDetailsListView()
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
