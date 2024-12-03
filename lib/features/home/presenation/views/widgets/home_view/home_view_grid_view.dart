@@ -1,5 +1,4 @@
 import 'package:bookly/features/home/domain_layer/entities/book_entity.dart';
-import 'package:bookly/features/home/presenation/manager/cubit/featured_books_cubit.dart';
 import 'package:bookly/features/home/presenation/manager/cubit/newest_books_cubit.dart';
 import 'package:bookly/features/home/presenation/views/widgets/home_view/home_view_grid_view_item.dart';
 import 'package:flutter/cupertino.dart';
@@ -48,10 +47,8 @@ class _HomeViewGridViewState extends State<HomeViewGridView> {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-        controller: _scrollController,
+    return SliverGrid.builder(
         itemCount: widget.books.length,
-        physics: const BouncingScrollPhysics(),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: widget.crossAxisCount,
           crossAxisSpacing: 5,
