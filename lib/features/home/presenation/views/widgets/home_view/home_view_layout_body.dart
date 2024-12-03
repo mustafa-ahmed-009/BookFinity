@@ -1,4 +1,3 @@
-import 'package:bookly/core/functions/show_error_snack_bar.dart';
 import 'package:bookly/core/utils/app_styles.dart';
 import 'package:bookly/features/home/presenation/manager/cubit/newest_books_cubit.dart';
 import 'package:bookly/features/home/presenation/views/widgets/custom_app_bar.dart';
@@ -12,11 +11,11 @@ class HomeViewLayoutBody extends StatefulWidget {
   const HomeViewLayoutBody({
     super.key,
     required this.crossAxisCount,
-    required this.SearchIconSize,
+    required this.serachIconSize,
     required this.logoHeight,
   });
   final int crossAxisCount;
-  final double SearchIconSize;
+  final double serachIconSize;
   final double logoHeight;
 
   @override
@@ -66,12 +65,12 @@ class _HomeViewLayoutBodyState extends State<HomeViewLayoutBody> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CustomAppBar(
-                  searchIconSize: widget.SearchIconSize,
+                  searchIconSize: widget.serachIconSize,
                   logoHeight: widget.logoHeight,
                 ),
                 const HomeViewListViewBlocBuilder(),
                 Text(
-                  "Best Seller",
+                  "Newest Books",
                   style: AppStyles.styleSemiBold24(context),
                 ),
               ],
@@ -83,19 +82,3 @@ class _HomeViewLayoutBodyState extends State<HomeViewLayoutBody> {
     );
   }
 }
-      //  BlocConsumer<NewestBooksCubit, NewestBooksState>(
-      //             listener: (context, state) {},
-      //             builder: (context, state) {
-      //               return SliverGrid(
-      //                 delegate: SliverChildBuilderDelegate((context, index) {
-      //                   Text("some data");
-      //                 }),
-      //                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-      //                   crossAxisCount: 2,
-      //                   crossAxisSpacing: 5,
-      //                   mainAxisSpacing: 5,
-      //                   mainAxisExtent: MediaQuery.sizeOf(context).height * 0.2,
-      //                 ),
-      //               );
-      //             },
-      //           )

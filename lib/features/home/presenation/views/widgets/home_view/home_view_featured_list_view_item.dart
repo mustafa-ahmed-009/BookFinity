@@ -6,6 +6,10 @@ class HomeViewFeaturedListViewItem extends StatelessWidget {
   final String imageUrl;
   @override
   Widget build(BuildContext context) {
+    final String validUrl = imageUrl.isNotEmpty
+        ? imageUrl
+        : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQppJKxBxJI-9UWLe2VVmzuBd24zsq4_ihxZw&s"; // Fallback image URL
+
     return Padding(
       padding: const EdgeInsets.only(right: 8),
       child: AspectRatio(
@@ -13,7 +17,7 @@ class HomeViewFeaturedListViewItem extends StatelessWidget {
           child: ClipRRect(
               borderRadius: BorderRadius.circular(12),
               child: CachedNetworkImage(
-                imageUrl: imageUrl,
+                imageUrl: validUrl,
                 fit: BoxFit.fill,
               ))),
     );

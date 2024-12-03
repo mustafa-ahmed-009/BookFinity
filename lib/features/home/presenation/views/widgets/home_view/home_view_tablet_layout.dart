@@ -8,7 +8,7 @@ class HomeViewTabletLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return const HomeViewLayoutBody(
       crossAxisCount: 1,
-      SearchIconSize: 34,
+      serachIconSize: 34,
       logoHeight: 34,
     );
   }

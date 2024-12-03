@@ -8,7 +8,7 @@ class HomeViewMobileLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return const HomeViewLayoutBody(
       crossAxisCount: 1,
-      SearchIconSize: 24,
+      serachIconSize: 24,
       logoHeight: 24,
     );
   }

@@ -7,8 +7,10 @@ class HomeViewDesktopLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const HomeViewLayoutBody(crossAxisCount: 2,
-    SearchIconSize: 52,
-    logoHeight: 52,);
+    return const HomeViewLayoutBody(
+      crossAxisCount: 2,
+      serachIconSize: 52,
+      logoHeight: 52,
+    );
   }
 }

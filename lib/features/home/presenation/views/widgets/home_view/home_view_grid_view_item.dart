@@ -26,7 +26,7 @@ class HomeViewGridBuilderItem extends StatelessWidget {
                 height: MediaQuery.sizeOf(context).height * .25,
                 child: HomeViewFeaturedListViewItem(
                   imageUrl: book.image ??
- "https://ih1.redbubble.net/image.4905811447.8675/flat,750x,075,f-pad,750x1000,f8f8f8.jpg",
+                      "https://ih1.redbubble.net/image.4905811447.8675/flat,750x,075,f-pad,750x1000,f8f8f8.jpg",
                 )),
           ),
           Expanded(
@@ -34,7 +34,9 @@ class HomeViewGridBuilderItem extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  book.title,
+                  book.title.length > 45
+                      ? book.title.substring(0, 45) + "..."
+                      : book.title,
                   style: AppStyles.styleSemiBold24(context),
                 ),
                 const Spacer(),
