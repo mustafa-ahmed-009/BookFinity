@@ -1,9 +1,11 @@
 import 'package:bookly/core/app_router.dart';
 import 'package:bookly/core/utils/app_styles.dart';
 import 'package:bookly/features/home/domain_layer/entities/book_entity.dart';
+import 'package:bookly/features/home/presenation/manager/cubit/newest_books_cubit.dart';
 import 'package:bookly/features/home/presenation/views/widgets/home_view/home_view_featured_list_view_item.dart';
 import 'package:bookly/features/home/presenation/views/widgets/rating_row.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 class HomeViewGridBuilderItem extends StatelessWidget {
@@ -16,6 +18,7 @@ class HomeViewGridBuilderItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        BlocProvider.of<NewestBooksCubit>(context).bookEntity = book; 
         GoRouter.of(context).push(AppRouter.kBookDetailsView);
       },
       child: Row(

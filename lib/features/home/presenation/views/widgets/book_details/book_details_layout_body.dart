@@ -1,9 +1,14 @@
+import 'package:bookly/core/app_router.dart';
 import 'package:bookly/core/utils/app_styles.dart';
+import 'package:bookly/features/home/domain_layer/entities/book_entity.dart';
+import 'package:bookly/features/home/presenation/manager/cubit/newest_books_cubit.dart';
 import 'package:bookly/features/home/presenation/views/widgets/book_details/book_details_list_view.dart';
 import 'package:bookly/features/home/presenation/views/widgets/book_details/book_details_two_buttons.dart';
 import 'package:bookly/features/home/presenation/views/widgets/home_view/home_view_featured_list_view_item.dart';
 import 'package:bookly/features/home/presenation/views/widgets/rating_row.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class BookDetailsLayoutBody extends StatelessWidget {
   const BookDetailsLayoutBody({
@@ -12,6 +17,9 @@ class BookDetailsLayoutBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final BookEntity book =
+        BlocProvider.of<NewestBooksCubit>(context).bookEntity;
+
     return SafeArea(
       child: Center(
         child: Column(
@@ -20,7 +28,7 @@ class BookDetailsLayoutBody extends StatelessWidget {
               children: [
                 IconButton(
                   onPressed: () {
-                    Navigator.of(context).pop();
+                    GoRouter.of(context).pop(AppRouter.kHomeView);
                   },
                   icon: const Icon(Icons.close),
                 ),
@@ -31,14 +39,16 @@ class BookDetailsLayoutBody extends StatelessWidget {
             ),
             SizedBox(
               height: MediaQuery.sizeOf(context).height * 0.43,
-              child: const HomeViewFeaturedListViewItem(imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0CHljACJAe1iD2ddBPpEV6jEKRnthMWnhcw&s",),
+              child: HomeViewFeaturedListViewItem(
+                imageUrl: book.image!,
+              ),
             ),
             Text(
-              "The best book ever made  ",
+              book.title,
               style: AppStyles.styleSemiBold28(context),
             ),
             Text(
-              "Mustafa Ahmed ",
+              book.authorName!,
               style: AppStyles.styleMedium20(context),
             ),
             const RatingRow(),

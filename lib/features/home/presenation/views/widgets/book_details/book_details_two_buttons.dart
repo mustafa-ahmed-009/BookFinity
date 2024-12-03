@@ -15,35 +15,10 @@ class BookDetailsTwoButtons extends StatelessWidget {
             flex: 1,
             child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.white,
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20),
-                    bottomLeft: Radius.circular(20),
-                  ),
-                ),
-              ),
-              onPressed: () {
-                print("Price button pressed");
-              },
-              child: const Text(
-                '19.99€',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-          ),
-          Expanded(
-            flex: 1,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.orangeAccent,
                 shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                    topRight: Radius.circular(20),
-                    bottomRight: Radius.circular(20),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(20),
                   ),
                 ),
               ),

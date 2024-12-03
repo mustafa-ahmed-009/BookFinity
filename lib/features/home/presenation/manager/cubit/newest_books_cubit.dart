@@ -9,9 +9,9 @@ class NewestBooksCubit extends Cubit<NewestBooksState> {
   NewestBooksCubit({required this.fetchNewestdBooksUseCase})
       : super(NewestBooksInitial());
   final FetchNewestdBooksUseCase fetchNewestdBooksUseCase;
-  
-  Future<void> fetchNewestBooks({int pageNumber= 0}) async {
-          if (pageNumber == 0) {
+  BookEntity bookEntity = BookEntity(authorName: "" , bookId: "" , image: "" ,price:0 , rating: 33 , title: "");
+  Future<void> fetchNewestBooks({int pageNumber = 0}) async {
+    if (pageNumber == 0) {
       emit(NewestBooksLoading());
     } else {
       emit(NewestBooksPaginationLoading());
