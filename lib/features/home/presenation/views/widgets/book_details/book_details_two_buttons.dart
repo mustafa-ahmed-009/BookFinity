@@ -1,4 +1,11 @@
+import 'dart:developer';
+
+import 'package:bookly/core/functions/show_error_snack_bar.dart';
+import 'package:bookly/features/home/domain_layer/entities/book_entity.dart';
+import 'package:bookly/features/home/presenation/manager/cubit/newest_books_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class BookDetailsTwoButtons extends StatelessWidget {
   const BookDetailsTwoButtons({
@@ -7,6 +14,9 @@ class BookDetailsTwoButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final BookEntity book =
+        BlocProvider.of<NewestBooksCubit>(context).bookEntity;
+
     return SizedBox(
       width: 300,
       child: Row(
@@ -22,11 +32,16 @@ class BookDetailsTwoButtons extends StatelessWidget {
                   ),
                 ),
               ),
-              onPressed: () {
-                print("Free Preview button pressed");
+              onPressed: () async {
+                final Uri _url = Uri.parse(book.bookPreviewLink!);
+                if (await canLaunchUrl(_url)) {
+                  await launchUrl(_url);
+                }
               },
-              child: const Text(
-                'Click here to preview',
+              child: Text(
+                book.bookPreviewLink!.isEmpty || book.bookPreviewLink == null
+                    ? 'sorry the book is not available for review'
+                    : "click here to preview the book ",
                 style: TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,

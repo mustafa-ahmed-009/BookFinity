@@ -1,3 +1,4 @@
+import 'package:bookly/features/home/data_layer/models/book_model/book_model.dart';
 import 'package:hive/hive.dart';
 part 'book_entity.g.dart';
 
@@ -17,9 +18,11 @@ class BookEntity {
   final num? rating;
     @HiveField(6)
   final num? ratingCount;
-
-  BookEntity( 
-      {required this.image,
+    @HiveField(7)
+  final String? bookPreviewLink;
+  BookEntity(
+   { required this.bookPreviewLink,  
+      required this.image,
       required this.title,
       required this.authorName,
       required this.price,

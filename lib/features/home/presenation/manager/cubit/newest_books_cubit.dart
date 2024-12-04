@@ -10,6 +10,7 @@ class NewestBooksCubit extends Cubit<NewestBooksState> {
       : super(NewestBooksInitial());
   final FetchNewestdBooksUseCase fetchNewestdBooksUseCase;
   BookEntity bookEntity = BookEntity(
+    bookPreviewLink: "",
       authorName: "",
       bookId: "",
       image: "",
