@@ -32,6 +32,13 @@ abstract class AppStyles {
       fontWeight: FontWeight.w500,
     );
   }
+    static TextStyle styleRegualr18(BuildContext context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 16),
+      fontFamily: 'GT Sectra Fine',
+      fontWeight: FontWeight.w400,
+    );
+  }
 
   static TextStyle styleBold16(BuildContext context) {
     return TextStyle(
@@ -69,7 +76,15 @@ abstract class AppStyles {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 20),
       fontFamily: 'GT Sectra Fine',
-      fontWeight: FontWeight.w500,
+      fontWeight: FontWeight.w300,
+    );
+  }
+
+  static TextStyle styleRegular20(BuildContext context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 20),
+      fontFamily: 'GT Sectra Fine',
+      fontWeight: FontWeight.w400,
     );
   }
 
@@ -88,7 +103,8 @@ abstract class AppStyles {
       fontWeight: FontWeight.w600,
     );
   }
-    static TextStyle styleSemiBold28(BuildContext context) {
+
+  static TextStyle styleSemiBold28(BuildContext context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 28),
       fontFamily: 'GT Sectra Fine',
