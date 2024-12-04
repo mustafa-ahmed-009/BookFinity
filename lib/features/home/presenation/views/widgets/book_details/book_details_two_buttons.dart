@@ -39,7 +39,7 @@ class BookDetailsTwoButtons extends StatelessWidget {
                 }
               },
               child: Text(
-                book.bookPreviewLink!.isEmpty || book.bookPreviewLink == null
+              book.bookPreviewLink == null  || book.bookPreviewLink!.isEmpty  
                     ? 'sorry the book is not available for review'
                     : "click here to preview the book ",
                 style: TextStyle(

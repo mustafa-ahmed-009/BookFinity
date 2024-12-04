@@ -1,57 +1,84 @@
-import 'package:bookly/constants.dart';
-import 'package:flutter/material.dart';
+import 'dart:developer';
 
-class SearchViewAppBar extends StatelessWidget {
+import 'package:bookly/constants.dart';
+import 'package:bookly/features/home/domain_layer/entities/book_entity.dart';
+import 'package:bookly/features/search/presentation/cubits/cubit/search_cubit_cubit.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+class SearchViewAppBar extends StatefulWidget {
   const SearchViewAppBar({
     super.key,
   });
 
   @override
+  State<SearchViewAppBar> createState() => _SearchViewAppBarState();
+}
+
+class _SearchViewAppBarState extends State<SearchViewAppBar> {
+  final TextEditingController _controller = TextEditingController();
+  @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
-      child: Container(
-        decoration: BoxDecoration(
-          color: kPrimaryColor,
-          borderRadius: BorderRadius.circular(20),
-          border: Border.all(
-            color: Colors.grey, // Border color
-            width: 1.5, // Border thickness
-          ),
-        ),
-        child: Row(
-          children: [
-            // Search TextField
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: IconButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  icon: const Icon(Icons.arrow_back)),
+    final myCubit = BlocProvider.of<SearchViewCubit>(context);
+    return SliverToBoxAdapter(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Container(
+          decoration: BoxDecoration(
+            color: kPrimaryColor,
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(
+              color: Colors.grey, // Border color
+              width: 1.5, // Border thickness
             ),
-            const Expanded(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 12.0),
-                child: TextField(
-                  style: TextStyle(color: Colors.white),
-                  decoration: InputDecoration(
-                    hintText: 'Search',
-                    hintStyle: TextStyle(color: Colors.grey),
-                    border: InputBorder.none, // Removes default border
+          ),
+          child: Row(
+            children: [
+              // Search TextField
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: IconButton(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      BlocProvider.of<SearchViewCubit>(context).emitInitial();
+                    },
+                    icon: const Icon(Icons.arrow_back)),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 12.0),
+                  child: TextField(
+                    controller: _controller,
+                    onSubmitted: (value) async {
+                      final searchParam = _controller.value.text;
+                      await myCubit.fetchSearchResults(
+                          searchParams: searchParam);
+                    },
+                    style: TextStyle(color: Colors.white),
+                    decoration: InputDecoration(
+                      hintText: 'Search',
+                      hintStyle: TextStyle(color: Colors.grey),
+                      border: InputBorder.none, // Removes default border
+                    ),
                   ),
                 ),
               ),
-            ),
-            // Search Icon
-            const Padding(
-              padding: EdgeInsets.only(right: 12.0),
-              child: Icon(
-                Icons.search,
-                color: Colors.grey, // Icon color
-              ),
-            ),
-          ],
+              // Search Icon
+              Padding(
+                  padding: EdgeInsets.only(right: 12.0),
+                  child: IconButton(
+                    onPressed: () async {
+                      final searchParam = _controller.value.text;
+                      await myCubit.fetchSearchResults(
+                          searchParams: searchParam);
+                    },
+                    icon: Icon(
+                      Icons.search,
+                      color: Colors.grey, // Icon color
+                    ),
+                  )),
+            ],
+          ),
         ),
       ),
     );
