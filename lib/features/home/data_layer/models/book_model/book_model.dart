@@ -25,10 +25,10 @@ class BookModel extends BookEntity {
     this.accessInfo,
     this.searchInfo,
   }) : super(
-    bookPreviewLink: volumeInfo!.previewLink,
+            bookPreviewLink: volumeInfo!.previewLink,
             bookId: id!,
             image: volumeInfo.imageLinks?.thumbnail ?? '',
-            authorName: volumeInfo.authors?.first ?? 'No Name',
+            authorName: lengthadjustment(volumeInfo.authors?.first),
             price: 0.0,
             rating: volumeInfo.averageRating,
             title: volumeInfo.title!,
@@ -63,4 +63,17 @@ class BookModel extends BookEntity {
         'accessInfo': accessInfo?.toJson(),
         'searchInfo': searchInfo?.toJson(),
       };
+}
+
+String lengthadjustment(String? text) {
+  String nullCase = "No author found";
+  if (text == null) {
+    return nullCase;
+  }
+  if (text.length > 40) {
+    text = text.substring(0, 40);
+    return text;
+  } else {
+    return text;
+  }
 }

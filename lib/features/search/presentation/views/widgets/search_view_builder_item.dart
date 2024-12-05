@@ -43,7 +43,7 @@ class SearchViewGridBuilderItem extends StatelessWidget {
                 ),
                 const Spacer(),
                 Text(
-                  book.authorName ?? "book author name was not found ",
+                  book.authorName!,
                   style: AppStyles.sytleLight20(context),
                 ),
                 const Spacer(),
