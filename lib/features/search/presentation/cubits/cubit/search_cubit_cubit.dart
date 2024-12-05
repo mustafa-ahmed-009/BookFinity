@@ -10,9 +10,17 @@ class SearchViewCubit extends Cubit<SearchCubitState> {
       : super(SearchCubitInitial());
   final SearchUseCaseImp searchUseCaseImp;
   List<BookEntity> mybooks = [];
-  Future<void> fetchSearchResults({required String searchParams}) async {
-    emit(SearchCubitLoading());
-    var result = await searchUseCaseImp.call(serachParams: searchParams);
+  String searchParams = "";
+  Future<void> fetchSearchResults(
+      {required String searchParams, int pageNumber = 0}) async {
+    if (pageNumber == 0) {
+      emit(SearchCubitLoading());
+    }
+    else {
+      emit(SearchCubitPaginationLoading());
+    }
+    var result = await searchUseCaseImp.call(
+        serachParams: searchParams, pageNumber: pageNumber);
     result.fold((failure) {
       emit(SearchCubitFailure(errorMessage: failure.message));
     }, (books) {
@@ -22,6 +30,6 @@ class SearchViewCubit extends Cubit<SearchCubitState> {
   }
 
   void emitInitial() {
-    emit(SearchCubitInitial()); 
+    emit(SearchCubitInitial());
   }
 }

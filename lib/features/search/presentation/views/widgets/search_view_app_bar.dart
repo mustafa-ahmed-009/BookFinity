@@ -46,16 +46,17 @@ class _SearchViewAppBarState extends State<SearchViewAppBar> {
               ),
               Expanded(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 12.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
                   child: TextField(
                     controller: _controller,
                     onSubmitted: (value) async {
                       final searchParam = _controller.value.text;
                       await myCubit.fetchSearchResults(
                           searchParams: searchParam);
+                      myCubit.searchParams = value;
                     },
-                    style: TextStyle(color: Colors.white),
-                    decoration: InputDecoration(
+                    style: const TextStyle(color: Colors.white),
+                    decoration: const InputDecoration(
                       hintText: 'Search',
                       hintStyle: TextStyle(color: Colors.grey),
                       border: InputBorder.none, // Removes default border
@@ -65,14 +66,15 @@ class _SearchViewAppBarState extends State<SearchViewAppBar> {
               ),
               // Search Icon
               Padding(
-                  padding: EdgeInsets.only(right: 12.0),
+                  padding: const EdgeInsets.only(right: 12.0),
                   child: IconButton(
                     onPressed: () async {
                       final searchParam = _controller.value.text;
                       await myCubit.fetchSearchResults(
                           searchParams: searchParam);
+                      myCubit.searchParams = _controller.value.text;
                     },
-                    icon: Icon(
+                    icon: const Icon(
                       Icons.search,
                       color: Colors.grey, // Icon color
                     ),

@@ -27,7 +27,7 @@ class RatingRow extends StatelessWidget {
         ),
         Text(
           realRating,
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
+          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
         ),
         const SizedBox(
           width: 4,

@@ -10,7 +10,7 @@ class SearchUseCaseImp implements SearchUseCaseArch<List<BookEntity>> {
   SearchUseCaseImp({required this.searchRepo});
 
   @override
-  Future<Either<Failure, List<BookEntity>>> call({required String serachParams}) async {
-    return await searchRepo.getSearchResults(searchParams: serachParams);
+  Future<Either<Failure, List<BookEntity>>> call({required String serachParams , int pageNumber =0}) async {
+    return await searchRepo.getSearchResults(searchParams: serachParams , pageNumber: pageNumber);
   }
 }

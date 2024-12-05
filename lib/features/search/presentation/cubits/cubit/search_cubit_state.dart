@@ -6,9 +6,14 @@ class SearchCubitState {}
 class SearchCubitInitial extends SearchCubitState {}
 
 class SearchCubitLoading extends SearchCubitState {}
+class SearchCubitPaginationLoading extends SearchCubitState {}
 
 class SearchCubitSuccess extends SearchCubitState {}
+class SearchCubitPaginationFailure extends SearchCubitState {
+  final String errorMessage;
 
+  SearchCubitPaginationFailure({required this.errorMessage}); 
+} 
 class SearchCubitFailure extends SearchCubitState {
   final String errorMessage;
 

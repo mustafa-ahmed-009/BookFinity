@@ -33,16 +33,16 @@ class BookDetailsTwoButtons extends StatelessWidget {
                 ),
               ),
               onPressed: () async {
-                final Uri _url = Uri.parse(book.bookPreviewLink!);
-                if (await canLaunchUrl(_url)) {
-                  await launchUrl(_url);
+                final Uri url = Uri.parse(book.bookPreviewLink!);
+                if (await canLaunchUrl(url)) {
+                  await launchUrl(url);
                 }
               },
               child: Text(
               book.bookPreviewLink == null  || book.bookPreviewLink!.isEmpty  
                     ? 'sorry the book is not available for review'
                     : "click here to preview the book ",
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
                 ),

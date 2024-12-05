@@ -1,5 +1,3 @@
-import 'package:bookly/constants.dart';
-import 'package:bookly/core/functions/save_data_to_box.dart';
 import 'package:bookly/core/utils/api_services.dart';
 import 'package:bookly/features/home/data_layer/models/book_model/book_model.dart';
 import 'package:bookly/features/home/domain_layer/entities/book_entity.dart';
@@ -9,9 +7,9 @@ class SearchRemoteDataSourceImpl extends RemoteSearchDataSource {
 
   SearchRemoteDataSourceImpl({required this.apiServices});
   @override
-  Future<List<BookEntity>> fetchSearchResults({required searchParams}) async {
+  Future<List<BookEntity>> fetchSearchResults({required searchParams , int pageNumber =0}) async {
     var data = await apiServices.get(
-        endPoint: "volumes?q=$searchParams&Filtering=free-ebooks");
+        endPoint: "volumes?q=$searchParams&Filtering=free-ebooks&startIndex=${pageNumber*10}");
     List<BookEntity> books = getBookList(data);
     return books;
   }
@@ -34,7 +32,7 @@ class SearchRemoteDataSourceImpl extends RemoteSearchDataSource {
 
 
 abstract class RemoteSearchDataSource {
-  Future<List<BookEntity>> fetchSearchResults({required searchParams});
+  Future<List<BookEntity>> fetchSearchResults({required searchParams, int pageNumber =0});
 }
 
 List<BookEntity> getBookList(Map<String, dynamic> data ) {

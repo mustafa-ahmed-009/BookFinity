@@ -11,9 +11,9 @@ class SearchRepoImpl implements SearchRepo {
   SearchRepoImpl({required this.remoteSearchDataSource});
   @override
   Future<Either<Failure, List<BookEntity> >> getSearchResults(
-      {required searchParams}) async{
+      {required searchParams , int pageNumber = 0 }) async{
       try {
-           List<BookEntity>  books = await  remoteSearchDataSource.fetchSearchResults(searchParams: searchParams); 
+           List<BookEntity>  books = await  remoteSearchDataSource.fetchSearchResults(searchParams: searchParams , pageNumber: pageNumber); 
 
       return right(books);
     } catch (e) {

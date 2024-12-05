@@ -20,11 +20,13 @@ class _SearchViewGridBuilderState extends State<SearchViewGridBuilder> {
     return BlocConsumer<SearchViewCubit, SearchCubitState>(
       listener: (context, state) {
         if (state is SearchCubitSuccess) {
-          books = BlocProvider.of<SearchViewCubit>(context).mybooks;
+          books += BlocProvider.of<SearchViewCubit>(context).mybooks;
         }
       },
       builder: (context, state) {
-        if (state is SearchCubitSuccess) {
+        if (state is SearchCubitSuccess ||
+            state is SearchCubitPaginationLoading ||
+            state is SearchCubitPaginationFailure) {
           return SliverGrid.builder(
               itemCount: books.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -39,11 +41,11 @@ class _SearchViewGridBuilderState extends State<SearchViewGridBuilder> {
                 );
               });
         } else if (state is SearchCubitFailure) {
-          return WrappingInMiddleInsideCustomScrollViewWidget(
+          return const WrappingInMiddleInsideCustomScrollViewWidget(
               text: "unfortunately there are no data matching your search");
         } else {
-          return SliverToBoxAdapter(
-            child: const Center(
+          return const SliverToBoxAdapter(
+            child: Center(
               child: CircularProgressIndicator(),
             ),
           );

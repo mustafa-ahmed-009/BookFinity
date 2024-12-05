@@ -1,4 +1,3 @@
-import 'package:bookly/features/home/data_layer/models/book_model/book_model.dart';
 import 'package:hive/hive.dart';
 part 'book_entity.g.dart';
 
