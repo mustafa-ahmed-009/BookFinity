@@ -32,10 +32,10 @@ class _HomeViewLayoutBodyState extends State<HomeViewLayoutBody> {
   @override
   void initState() {
     super.initState();
-    context.read<NewestBooksCubit>().fetchNewestBooks(topic:   BlocProvider.of<SharedDataCubit>(context)
-            .topic);
-    context.read<FeaturedBooksCubit>().fetchFeaturedBook(topic:   BlocProvider.of<SharedDataCubit>(context)
-            .topic);
+    context.read<NewestBooksCubit>().fetchNewestBooks(
+        topic: BlocProvider.of<SharedDataCubit>(context).topic);
+    context.read<FeaturedBooksCubit>().fetchFeaturedBook(
+        topic: BlocProvider.of<SharedDataCubit>(context).topic);
     _scrollController = ScrollController();
     _scrollController.addListener(_scrollListener);
   }
@@ -46,9 +46,9 @@ class _HomeViewLayoutBodyState extends State<HomeViewLayoutBody> {
     if (currentPositions >= 0.7 * maxScrollLength) {
       if (!isLoading) {
         isLoading = true;
-        await BlocProvider.of<NewestBooksCubit>(context)
-            .fetchNewestBooks(pageNumber: nextPage++ , topic:   BlocProvider.of<SharedDataCubit>(context)
-            .topic);
+        await BlocProvider.of<NewestBooksCubit>(context).fetchNewestBooks(
+            pageNumber: nextPage++,
+            topic: BlocProvider.of<SharedDataCubit>(context).topic);
         isLoading = false;
       }
     }
@@ -75,10 +75,24 @@ class _HomeViewLayoutBodyState extends State<HomeViewLayoutBody> {
                   searchIconSize: widget.serachIconSize,
                   logoHeight: widget.logoHeight,
                 ),
+                Center(
+                  child: Text(
+                    "Most Popular books in ${BlocProvider.of<SharedDataCubit>(context).topic}",
+                    style: AppStyles.styleSemiBold24(context),
+                  ),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
                 const HomeViewListViewBlocBuilder(),
-                Text(
-                  "Newest Books",
-                  style: AppStyles.styleSemiBold24(context),
+                SizedBox(
+                  height: 5,
+                ),
+                Center(
+                  child: Text(
+                    "Newest Books in ${BlocProvider.of<SharedDataCubit>(context).topic}",
+                    style: AppStyles.styleSemiBold24(context),
+                  ),
                 ),
               ],
             ),

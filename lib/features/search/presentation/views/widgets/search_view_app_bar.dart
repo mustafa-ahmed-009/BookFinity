@@ -22,7 +22,6 @@ class _SearchViewAppBarState extends State<SearchViewAppBar> {
         padding: const EdgeInsets.all(16.0),
         child: Container(
           decoration: BoxDecoration(
-            color: kPrimaryColor,
             borderRadius: BorderRadius.circular(20),
             border: Border.all(
               color: Colors.grey, // Border color
@@ -55,6 +54,7 @@ class _SearchViewAppBarState extends State<SearchViewAppBar> {
                       myCubit.searchParams = value;
                     },
                     style: const TextStyle(color: Colors.white),
+                    cursorColor: kborderColor,
                     decoration: const InputDecoration(
                       hintText: 'Search',
                       hintStyle: TextStyle(color: Colors.grey),

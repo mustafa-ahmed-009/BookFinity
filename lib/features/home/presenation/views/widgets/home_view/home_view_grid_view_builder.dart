@@ -30,6 +30,7 @@ class _HomeViewGridViewBuilderState extends State<HomeViewGridViewBuilder> {
       },
       builder: (context, state) {
         return SliverGrid.builder(
+          
             itemCount: books.length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: widget.crossAxisCount,

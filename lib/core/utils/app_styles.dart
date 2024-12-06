@@ -32,7 +32,8 @@ abstract class AppStyles {
       fontWeight: FontWeight.w500,
     );
   }
-    static TextStyle styleRegualr18(BuildContext context) {
+
+  static TextStyle styleRegualr18(BuildContext context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 16),
       fontFamily: 'GT Sectra Fine',
@@ -91,6 +92,14 @@ abstract class AppStyles {
   static TextStyle styleSemiBold20(BuildContext context) {
     return TextStyle(
       fontSize: getResponsiveFontSize(context, fontSize: 20),
+      fontFamily: 'GT Sectra Fine',
+      fontWeight: FontWeight.w600,
+    );
+  }
+
+  static TextStyle styleSemiBold22(BuildContext context) {
+    return TextStyle(
+      fontSize: getResponsiveFontSize(context, fontSize: 22),
       fontFamily: 'GT Sectra Fine',
       fontWeight: FontWeight.w600,
     );

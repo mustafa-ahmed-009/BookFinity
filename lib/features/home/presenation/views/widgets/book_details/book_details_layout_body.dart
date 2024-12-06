@@ -42,16 +42,25 @@ class BookDetailsLayoutBody extends StatelessWidget {
                 SizedBox(
                   height: MediaQuery.sizeOf(context).height * 0.43,
                   child: HomeViewFeaturedListViewItem(
-                   book: book,
+                    book: book,
                   ),
+                ),
+                const SizedBox(
+                  height: 5,
                 ),
                 Text(
                   book.title,
-                  style: AppStyles.styleSemiBold28(context),
+                  style: AppStyles.styleSemiBold24(context),
+                ),
+                const SizedBox(
+                  height: 5,
                 ),
                 Text(
                   book.authorName!,
                   style: AppStyles.styleMedium20(context),
+                ),
+                const SizedBox(
+                  height: 5,
                 ),
                 RatingRow(book: book),
                 const SizedBox(

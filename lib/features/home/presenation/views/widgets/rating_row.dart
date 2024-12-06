@@ -1,3 +1,4 @@
+import 'package:bookly/core/utils/app_styles.dart';
 import 'package:bookly/features/home/domain_layer/entities/book_entity.dart';
 import 'package:flutter/material.dart';
 
@@ -32,9 +33,12 @@ class RatingRow extends StatelessWidget {
         const SizedBox(
           width: 4,
         ),
-        Text(realRating == "No Ratings Yet"
-            ? ""
-            : "(${book.ratingCount.toString()})"),
+        Text(
+          realRating == "No Ratings Yet"
+              ? ""
+              : "(${book.ratingCount.toString()})",
+          style: AppStyles.styleSemiBold18(context),
+        ),
         const SizedBox(
           width: 4,
         ),

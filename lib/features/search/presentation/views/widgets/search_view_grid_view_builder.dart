@@ -39,8 +39,11 @@ class _SearchViewGridBuilderState extends State<SearchViewGridBuilder> {
                 mainAxisExtent: MediaQuery.sizeOf(context).height * 0.2,
               ),
               itemBuilder: (context, index) {
-                return SearchViewGridBuilderItem(
-                  book: books[index],
+                return Padding(
+                  padding: const EdgeInsets.only(left: 9),
+                  child: SearchViewGridBuilderItem(
+                    book: books[index],
+                  ),
                 );
               });
         } else if (state is SearchCubitFailure ||

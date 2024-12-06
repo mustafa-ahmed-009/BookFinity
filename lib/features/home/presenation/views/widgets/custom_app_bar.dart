@@ -20,6 +20,7 @@ class CustomAppBar extends StatelessWidget {
             height: logoHeight,
           ),
           IconButton(
+              color: kborderColor,
               onPressed: () {
                 GoRouter.of(context).push(AppRouter.kSearchView);
               },

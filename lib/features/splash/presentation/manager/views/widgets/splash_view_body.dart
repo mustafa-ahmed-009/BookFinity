@@ -1,9 +1,8 @@
 import 'package:bookly/constants.dart';
 import 'package:bookly/core/app_router.dart';
-import 'package:bookly/features/home/presenation/manager/cubit/featured_books_cubit.dart';
-import 'package:bookly/features/home/presenation/manager/cubit/newest_books_cubit.dart';
 import 'package:bookly/features/home/presenation/manager/cubit/shared_data_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
@@ -24,63 +23,87 @@ class _SplashViewBodyState extends State<SplashViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Image.asset(
-          "assets/images/Logo.png",
-          scale: 0.9,
-        ),
-        const SizedBox(
-          height: 20,
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Container(
-            decoration: BoxDecoration(
-              color: kPrimaryColor,
-              borderRadius: BorderRadius.circular(12),
-              border: Border.all(
-                color: Colors.grey, // Border color
-                width: 1.5, // Border thickness
-              ),
-            ),
-            child: TextField(
-              controller: _controller,
-              textAlign: TextAlign.center,
-              decoration: const InputDecoration(
-                hintText: "Please Enter a topic you are intserested in ",
-                border: InputBorder.none,
-              ),
-              style: const TextStyle(color: Colors.white),
+    return Container(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Animate(
+            effects: [
+              FadeEffect(
+                  duration: Duration(
+                seconds: 1,
+              )),
+              SlideEffect(
+                  delay: Duration(milliseconds: 100),
+                  duration: Duration(seconds: 1))
+            ],
+            child: Image.asset(
+              "assets/images/Logo.png",
+              scale: 0.9,
             ),
           ),
-        ),
-        const SizedBox(
-          height: 12,
-        ),
-        TextButton(
-          onPressed: () {
-            // Check if the input is empty
-            if (_controller.text.trim().isEmpty) {
-              // Show an error or feedback
-
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text("Please enter a topic before proceeding."),
-                  backgroundColor: kPrimaryColor,
+          const SizedBox(
+            height: 20,
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: TextField(
+              controller: _controller,
+              decoration: InputDecoration(
+                hintText: "Enter a topic you are interested in",
+                hintStyle: TextStyle(color: Colors.grey[500]),
+                filled: true,
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide.none,
                 ),
-              );
-            } else {
-              BlocProvider.of<SharedDataCubit>(context).topic =
-                  _controller.text;
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(12),
+                  borderSide: BorderSide(color: kborderColor, width: 2),
+                ),
+              ),
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+          const SizedBox(
+            height: 12,
+          ),
+          ElevatedButton(
+            onPressed: () {
+              // Check if the input is empty
+              if (_controller.text.trim().isEmpty) {
+                // Show an error or feedback
 
-              GoRouter.of(context).go(AppRouter.kHomeView);
-            }
-          },
-          child: const Text("Start"),
-        ),
-      ],
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(
+                    content: Center(
+                        child: Text("Please enter a topic before proceeding.")),
+                    backgroundColor: kPrimaryColor,
+                  ),
+                );
+              } else {
+                BlocProvider.of<SharedDataCubit>(context).topic =
+                    _controller.text;
+
+                GoRouter.of(context).go(AppRouter.kHomeView);
+              }
+            },
+            style: ElevatedButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(12),
+              ),
+              padding: EdgeInsets.symmetric(vertical: 15, horizontal: 40),
+            ),
+            child: Text(
+              "Start",
+              style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

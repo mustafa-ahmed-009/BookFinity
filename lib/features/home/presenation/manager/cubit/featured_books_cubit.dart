@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:bookly/features/home/domain_layer/entities/book_entity.dart';
