@@ -1,3 +1,6 @@
+import 'package:bookly/core/functions/setup_service_locator.dart';
+import 'package:bookly/features/search/data_layer/repos/search_repo.dart';
+import 'package:bookly/features/search/domain_layer/use_cases/search_use_case.dart';
 import 'package:bookly/features/search/presentation/cubits/cubit/search_cubit_cubit.dart';
 import 'package:bookly/features/search/presentation/views/widgets/search_view_app_bar.dart';
 import 'package:bookly/features/search/presentation/views/widgets/search_view_grid_view_builder.dart';
@@ -49,26 +52,32 @@ class _SearchViewMainLayoutState extends State<SearchViewMainLayout> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: CustomScrollView(
-        controller: _scrollController,
-        slivers: [
-          const SearchViewAppBar(),
-          BlocBuilder<SearchViewCubit, SearchCubitState>(
-            builder: (context, state) {
-              if (state is SearchCubitInitial) {
-                return const WrappingInMiddleInsideCustomScrollViewWidget(
-                  text: "Oops there are no data to show Please search First",
-                );
-              } else {
-                return const SliverToBoxAdapter(
-                  child: SizedBox(),
-                );
-              }
-            },
-          ),
-          SearchViewGridBuilder(crossAxisCount: widget.crossAxisCount)
-        ],
+    return BlocProvider(
+      create: (context) => SearchViewCubit(
+        searchUseCaseImp:
+            SearchUseCaseImp(searchRepo: getIt.get<SearchRepoImpl>()),
+      ),
+      child: SafeArea(
+        child: CustomScrollView(
+          controller: _scrollController,
+          slivers: [
+            const SearchViewAppBar(),
+            BlocBuilder<SearchViewCubit, SearchCubitState>(
+              builder: (context, state) {
+                if (state is SearchCubitInitial) {
+                  return const WrappingInMiddleInsideCustomScrollViewWidget(
+                    text: "Oops there are no data to show Please search First",
+                  );
+                } else {
+                  return const SliverToBoxAdapter(
+                    child: SizedBox(),
+                  );
+                }
+              },
+            ),
+            SearchViewGridBuilder(crossAxisCount: widget.crossAxisCount)
+          ],
+        ),
       ),
     );
   }

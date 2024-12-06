@@ -58,12 +58,7 @@ class BooklyApp extends StatelessWidget {
           )..fetchNewestBooks(
               topic: BlocProvider.of<SharedDataCubit>(context).topic),
         ),
-        BlocProvider(
-          create: (context) => SearchViewCubit(
-            searchUseCaseImp:
-                SearchUseCaseImp(searchRepo: getIt.get<SearchRepoImpl>()),
-          ),
-        ),
+
       ],
       child: MaterialApp.router(
         routerConfig: AppRouter.router,
