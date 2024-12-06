@@ -1,7 +1,5 @@
-import 'dart:developer';
 
 import 'package:bookly/constants.dart';
-import 'package:bookly/features/home/domain_layer/entities/book_entity.dart';
 import 'package:bookly/features/search/presentation/cubits/cubit/search_cubit_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

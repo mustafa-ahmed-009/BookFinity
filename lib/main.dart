@@ -8,6 +8,7 @@ import 'package:bookly/features/home/domain_layer/use_cases/fetch_featured_books
 import 'package:bookly/features/home/domain_layer/use_cases/fetch_newest_books_use_case.dart';
 import 'package:bookly/features/home/presenation/manager/cubit/featured_books_cubit.dart';
 import 'package:bookly/features/home/presenation/manager/cubit/newest_books_cubit.dart';
+import 'package:bookly/features/home/presenation/manager/cubit/shared_data_cubit.dart';
 import 'package:bookly/features/search/data_layer/repos/search_repo.dart';
 import 'package:bookly/features/search/domain_layer/use_cases/search_use_case.dart';
 import 'package:bookly/features/search/presentation/cubits/cubit/search_cubit_cubit.dart';
@@ -39,11 +40,15 @@ class BooklyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
+          create: (context) => SharedDataCubit(),
+        ),
+        BlocProvider(
           create: (context) => FeaturedBooksCubit(
             featuredBooksUseCase: FetchFeaturedBooksUseCase(
               homeRepo: getIt.get<HomeRepoImpl>(),
             ),
-          )..fetchFeaturedBook(),
+          )..fetchFeaturedBook(
+              topic: BlocProvider.of<SharedDataCubit>(context).topic),
         ),
         BlocProvider(
           create: (context) => NewestBooksCubit(

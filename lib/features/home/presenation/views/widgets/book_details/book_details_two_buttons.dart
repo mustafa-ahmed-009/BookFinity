@@ -1,6 +1,4 @@
-import 'dart:developer';
 
-import 'package:bookly/core/functions/show_error_snack_bar.dart';
 import 'package:bookly/features/home/domain_layer/entities/book_entity.dart';
 import 'package:bookly/features/home/presenation/manager/cubit/newest_books_cubit.dart';
 import 'package:flutter/material.dart';

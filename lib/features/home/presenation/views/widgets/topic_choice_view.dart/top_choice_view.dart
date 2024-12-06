@@ -6,6 +6,6 @@ class TopChoiceView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TopChoiceViewBody() ;
+    return const TopChoiceViewBody() ;
   }
 }

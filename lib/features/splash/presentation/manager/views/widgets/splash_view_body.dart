@@ -2,6 +2,7 @@ import 'package:bookly/constants.dart';
 import 'package:bookly/core/app_router.dart';
 import 'package:bookly/features/home/presenation/manager/cubit/featured_books_cubit.dart';
 import 'package:bookly/features/home/presenation/manager/cubit/newest_books_cubit.dart';
+import 'package:bookly/features/home/presenation/manager/cubit/shared_data_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -30,7 +31,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
           "assets/images/Logo.png",
           scale: 0.9,
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Padding(
@@ -47,15 +48,15 @@ class _SplashViewBodyState extends State<SplashViewBody> {
             child: TextField(
               controller: _controller,
               textAlign: TextAlign.center,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: "Please Enter a topic you are intserested in ",
                 border: InputBorder.none,
               ),
-              style: TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white),
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 12,
         ),
         TextButton(
@@ -63,17 +64,21 @@ class _SplashViewBodyState extends State<SplashViewBody> {
             // Check if the input is empty
             if (_controller.text.trim().isEmpty) {
               // Show an error or feedback
+
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
+                const SnackBar(
                   content: Text("Please enter a topic before proceeding."),
                   backgroundColor: kPrimaryColor,
                 ),
               );
             } else {
+              BlocProvider.of<SharedDataCubit>(context).topic =
+                  _controller.text;
+
               GoRouter.of(context).go(AppRouter.kHomeView);
             }
           },
-          child: Text("Start"),
+          child: const Text("Start"),
         ),
       ],
     );
