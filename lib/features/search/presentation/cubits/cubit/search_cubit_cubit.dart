@@ -15,8 +15,7 @@ class SearchViewCubit extends Cubit<SearchCubitState> {
       {required String searchParams, int pageNumber = 0}) async {
     if (pageNumber == 0) {
       emit(SearchCubitLoading());
-    }
-    else {
+    } else {
       emit(SearchCubitPaginationLoading());
     }
     var result = await searchUseCaseImp.call(
@@ -25,7 +24,11 @@ class SearchViewCubit extends Cubit<SearchCubitState> {
       emit(SearchCubitFailure(errorMessage: failure.message));
     }, (books) {
       mybooks = books;
-      emit(SearchCubitSuccess());
+      if (pageNumber == 0) {
+        emit(SearchCubitSuccess());
+      } else {
+        emit(SearchCubitPaginationSuccess());
+      }
     });
   }
 

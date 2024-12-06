@@ -18,13 +18,13 @@ class NewestBooksCubit extends Cubit<NewestBooksState> {
       rating: 33,
       title: "",
       ratingCount: 0);
-  Future<void> fetchNewestBooks({int pageNumber = 0}) async {
+  Future<void> fetchNewestBooks({int pageNumber = 0 , required String topic}) async {
     if (pageNumber == 0) {
       emit(NewestBooksLoading());
     } else {
       emit(NewestBooksPaginationLoading());
     }
-    var result = await fetchNewestdBooksUseCase.call(pageNumber);
+    var result = await fetchNewestdBooksUseCase.call(pageNumber: pageNumber , topic: topic);
     result.fold((failure) {
       emit(NewestBooksFailure(errorMessage: failure.message));
     }, (books) {

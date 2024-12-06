@@ -9,47 +9,38 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
 
   HomeRemoteDataSourceImpl({required this.apiServices});
   @override
-  Future<List<BookEntity>> fetchFeaturedBooks({int pageNumber =0 }) async {
+  Future<List<BookEntity>> fetchFeaturedBooks(
+      {int pageNumber = 0, required String topic}) async {
     var data = await apiServices.get(
-      
-        endPoint: "volumes?q=programming&maxResults=10&orderBy=relevance&filter=free-ebooks&startIndex=${pageNumber*10}");
-    List<BookEntity> books = getBookList(data , kHiveFeaturebBox);
+        endPoint:
+            "volumes?q=$topic&maxResults=10&orderBy=relevance&filter=free-ebooks&startIndex=${pageNumber * 10}");
+    List<BookEntity> books = getBookList(data, kHiveFeaturebBox);
     return books;
   }
-
- 
 
   @override
-  Future<List<BookEntity>> fetchNewestBooks({int pageNumber = 0 }) async {
+  Future<List<BookEntity>> fetchNewestBooks(
+      {int pageNumber = 0, required String topic}) async {
     var data = await apiServices.get(
-        endPoint: "volumes?q=programming&Filtering=free-ebooks&Sorting=newest&startIndex=${pageNumber*10}");
-    List<BookEntity> books = getBookList(data,kHiveNewsetBox);
+        endPoint:
+            "volumes?q=$topic&Filtering=free-ebooks&Sorting=newest&startIndex=${pageNumber * 10}");
+    List<BookEntity> books = getBookList(data, kHiveNewsetBox);
     return books;
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 abstract class HomeRemoteDataSource {
-  Future<List<BookEntity>> fetchFeaturedBooks({int pageNumber = 0 });
-  Future<List<BookEntity>> fetchNewestBooks({int pageNumber = 0 });
+  Future<List<BookEntity>> fetchFeaturedBooks(
+      {int pageNumber = 0, required String topic});
+  Future<List<BookEntity>> fetchNewestBooks(
+      {int pageNumber = 0, required String topic});
 }
 
-List<BookEntity> getBookList(Map<String, dynamic> data ,  String boxName) {
+List<BookEntity> getBookList(Map<String, dynamic> data, String boxName) {
   List<BookEntity> books = [];
   for (var bookMap in data["items"]) {
     books.add(BookModel.fromJson(bookMap));
   }
-   saveBooksData(books , boxName); 
+  saveBooksData(books, boxName);
   return books;
 }

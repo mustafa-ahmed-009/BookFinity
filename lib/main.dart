@@ -55,7 +55,8 @@ class BooklyApp extends StatelessWidget {
             fetchNewestdBooksUseCase: FetchNewestdBooksUseCase(
               homeRepo: getIt.get<HomeRepoImpl>(),
             ),
-          )..fetchNewestBooks(),
+          )..fetchNewestBooks(
+              topic: BlocProvider.of<SharedDataCubit>(context).topic),
         ),
         BlocProvider(
           create: (context) => SearchViewCubit(

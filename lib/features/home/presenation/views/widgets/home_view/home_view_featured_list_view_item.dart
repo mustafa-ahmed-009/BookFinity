@@ -18,7 +18,6 @@ class HomeViewFeaturedListViewItem extends StatelessWidget {
         : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQppJKxBxJI-9UWLe2VVmzuBd24zsq4_ihxZw&s";
     return GestureDetector(
       onTap: () {
-        log(book.image!);
         BlocProvider.of<NewestBooksCubit>(context).bookEntity = book;
 
         GoRouter.of(context).push(AppRouter.kBookDetailsView);

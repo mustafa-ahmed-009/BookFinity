@@ -32,7 +32,8 @@ class _HomeViewLayoutBodyState extends State<HomeViewLayoutBody> {
   @override
   void initState() {
     super.initState();
-    context.read<NewestBooksCubit>().fetchNewestBooks();
+    context.read<NewestBooksCubit>().fetchNewestBooks(topic:   BlocProvider.of<SharedDataCubit>(context)
+            .topic);
     context.read<FeaturedBooksCubit>().fetchFeaturedBook(topic:   BlocProvider.of<SharedDataCubit>(context)
             .topic);
     _scrollController = ScrollController();
@@ -46,7 +47,8 @@ class _HomeViewLayoutBodyState extends State<HomeViewLayoutBody> {
       if (!isLoading) {
         isLoading = true;
         await BlocProvider.of<NewestBooksCubit>(context)
-            .fetchNewestBooks(pageNumber: nextPage++);
+            .fetchNewestBooks(pageNumber: nextPage++ , topic:   BlocProvider.of<SharedDataCubit>(context)
+            .topic);
         isLoading = false;
       }
     }

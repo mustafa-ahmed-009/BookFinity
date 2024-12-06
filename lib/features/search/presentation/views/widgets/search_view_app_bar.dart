@@ -1,4 +1,3 @@
-
 import 'package:bookly/constants.dart';
 import 'package:bookly/features/search/presentation/cubits/cubit/search_cubit_cubit.dart';
 import 'package:flutter/material.dart';
@@ -49,6 +48,8 @@ class _SearchViewAppBarState extends State<SearchViewAppBar> {
                     controller: _controller,
                     onSubmitted: (value) async {
                       final searchParam = _controller.value.text;
+                      myCubit.mybooks = [];
+
                       await myCubit.fetchSearchResults(
                           searchParams: searchParam);
                       myCubit.searchParams = value;
@@ -68,6 +69,7 @@ class _SearchViewAppBarState extends State<SearchViewAppBar> {
                   child: IconButton(
                     onPressed: () async {
                       final searchParam = _controller.value.text;
+                      myCubit.mybooks = [];
                       await myCubit.fetchSearchResults(
                           searchParams: searchParam);
                       myCubit.searchParams = _controller.value.text;
