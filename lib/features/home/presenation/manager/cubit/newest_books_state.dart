@@ -9,9 +9,9 @@ class  NewestBooksLoading extends NewestBooksState {}
 class NewestBooksPaginationLoading extends NewestBooksState {}
 
 class NewestBooksPaginationFailure extends NewestBooksState {
-  final String errMessage;
+  final String errorMessage;
 
-  NewestBooksPaginationFailure(this.errMessage);
+  NewestBooksPaginationFailure(this.errorMessage);
 }
 class  NewestBooksFailure extends NewestBooksState {
   final String errorMessage;
