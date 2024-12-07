@@ -11,6 +11,8 @@ class SearchCubitPaginationLoading extends SearchCubitState {}
 
 class SearchCubitSuccess extends SearchCubitState {}
 
+class SearchCubitDeviceChanged extends SearchCubitState {}
+
 class SearchCubitPaginationFailure extends SearchCubitState {
   final String errorMessage;
 

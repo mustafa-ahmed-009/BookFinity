@@ -35,4 +35,8 @@ class SearchViewCubit extends Cubit<SearchCubitState> {
   void emitInitial() {
     emit(SearchCubitInitial());
   }
+
+  void uiChanged() {
+    emit(SearchCubitDeviceChanged());
+  }
 }

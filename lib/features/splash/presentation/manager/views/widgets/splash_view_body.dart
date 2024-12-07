@@ -28,8 +28,8 @@ class _SplashViewBodyState extends State<SplashViewBody> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Animate(
-            effects: [
-              FadeEffect(
+            effects:const [
+               FadeEffect(
                   duration: Duration(
                 seconds: 1,
               )),
