@@ -52,12 +52,8 @@ class _SearchViewMainLayoutState extends State<SearchViewMainLayout> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => SearchViewCubit(
-        searchUseCaseImp:
-            SearchUseCaseImp(searchRepo: getIt.get<SearchRepoImpl>()),
-      ),
-      child: SafeArea(
+    return 
+       SafeArea(
         child: CustomScrollView(
           controller: _scrollController,
           slivers: [
@@ -78,7 +74,7 @@ class _SearchViewMainLayoutState extends State<SearchViewMainLayout> {
             SearchViewGridBuilder(crossAxisCount: widget.crossAxisCount)
           ],
         ),
-      ),
+    
     );
   }
 }
