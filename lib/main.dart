@@ -9,9 +9,6 @@ import 'package:bookly/features/home/domain_layer/use_cases/fetch_newest_books_u
 import 'package:bookly/features/home/presenation/manager/cubit/featured_books_cubit.dart';
 import 'package:bookly/features/home/presenation/manager/cubit/newest_books_cubit.dart';
 import 'package:bookly/features/home/presenation/manager/cubit/shared_data_cubit.dart';
-import 'package:bookly/features/search/data_layer/repos/search_repo.dart';
-import 'package:bookly/features/search/domain_layer/use_cases/search_use_case.dart';
-import 'package:bookly/features/search/presentation/cubits/cubit/search_cubit_cubit.dart';
 import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -58,7 +55,6 @@ class BooklyApp extends StatelessWidget {
           )..fetchNewestBooks(
               topic: BlocProvider.of<SharedDataCubit>(context).topic),
         ),
-
       ],
       child: MaterialApp.router(
         routerConfig: AppRouter.router,
@@ -71,3 +67,4 @@ class BooklyApp extends StatelessWidget {
     );
   }
 }
+

@@ -17,7 +17,7 @@ class SearchView extends StatelessWidget {
           searchUseCaseImp:
               SearchUseCaseImp(searchRepo: getIt.get<SearchRepoImpl>()),
         ),
-        child: SearchViewBody(),
+        child: const SearchViewBody(),
       ),
     );
   }

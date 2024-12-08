@@ -28,8 +28,8 @@ class _SplashViewBodyState extends State<SplashViewBody> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Animate(
-            effects:const [
-               FadeEffect(
+            effects: const [
+              FadeEffect(
                   duration: Duration(
                 seconds: 1,
               )),
@@ -38,14 +38,14 @@ class _SplashViewBodyState extends State<SplashViewBody> {
                   duration: Duration(seconds: 1))
             ],
             child: Image.asset(
-              "assets/images/Logo.png",
+              kLogoImage,
             ),
           ),
           const SizedBox(
             height: 20,
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: TextField(
               controller: _controller,
               decoration: InputDecoration(
@@ -58,10 +58,10 @@ class _SplashViewBodyState extends State<SplashViewBody> {
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
-                  borderSide: BorderSide(color: kborderColor, width: 2),
+                  borderSide: const BorderSide(color: kborderColor, width: 2),
                 ),
               ),
-              style: TextStyle(color: Colors.white),
+              style: const TextStyle(color: Colors.white),
             ),
           ),
           const SizedBox(
@@ -91,9 +91,9 @@ class _SplashViewBodyState extends State<SplashViewBody> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               ),
-              padding: EdgeInsets.symmetric(vertical: 15, horizontal: 40),
+              padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 40),
             ),
-            child: Text(
+            child: const Text(
               "Start",
               style: TextStyle(
                   fontSize: 16,

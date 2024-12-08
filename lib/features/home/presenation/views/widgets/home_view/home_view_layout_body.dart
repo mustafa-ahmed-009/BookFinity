@@ -81,11 +81,11 @@ class _HomeViewLayoutBodyState extends State<HomeViewLayoutBody> {
                     style: AppStyles.styleSemiBold24(context),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 const HomeViewListViewBlocBuilder(),
-                SizedBox(
+                const SizedBox(
                   height: 5,
                 ),
                 Center(

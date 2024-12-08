@@ -17,9 +17,9 @@ class HomeViewFeaturedListViewItem extends StatelessWidget {
         ? book.image!
         : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQppJKxBxJI-9UWLe2VVmzuBd24zsq4_ihxZw&s";
     return Container(
-      margin: EdgeInsets.only(right: 8), // Spacing between items
+      margin: const EdgeInsets.only(right: 8), // Spacing between items
       decoration: BoxDecoration(
-        color: Color(0xFF1C1C1E), // Card background
+        color: const Color(0xFF1C1C1E), // Card background
         border: Border.all(
           color: kborderColor, // Purple border
         ),

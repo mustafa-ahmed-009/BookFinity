@@ -1,6 +1,5 @@
 import 'package:bookly/features/home/domain_layer/entities/book_entity.dart';
 import 'package:bookly/features/search/presentation/cubits/cubit/search_cubit_cubit.dart';
-import 'package:bookly/features/search/presentation/views/widgets/search_view_builder_item.dart';
 import 'package:bookly/features/search/presentation/views/widgets/search_view_grid_view.dart';
 import 'package:bookly/features/search/presentation/views/widgets/wrapping_in_the_middle.dart';
 import 'package:flutter/material.dart';

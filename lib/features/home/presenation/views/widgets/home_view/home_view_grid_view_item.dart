@@ -18,9 +18,8 @@ class HomeViewGridBuilderItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(left: 8),
+      margin: const EdgeInsets.symmetric(horizontal: 8),
       decoration: BoxDecoration(
-        color: Color(0xFF1C1C1E), // Card background
         border: Border.all(
           color: kborderColor, // Purple border
           width: 1.5,
