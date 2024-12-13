@@ -9,7 +9,6 @@ import 'package:bookly/features/home/domain_layer/use_cases/fetch_newest_books_u
 import 'package:bookly/features/home/presenation/manager/cubit/featured_books_cubit.dart';
 import 'package:bookly/features/home/presenation/manager/cubit/newest_books_cubit.dart';
 import 'package:bookly/features/home/presenation/manager/cubit/shared_data_cubit.dart';
-import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -21,12 +20,7 @@ void main() async {
   await Hive.openBox<BookEntity>(kHiveFeaturebBox);
   await Hive.openBox<BookEntity>(kHiveNewsetBox);
   Bloc.observer = SimpleBlocOberserver();
-  runApp(
-    DevicePreview(
-      enabled: true,
-      builder: (context) => const BooklyApp(), // Wrap your app
-    ),
-  );
+  runApp(BooklyApp());
 }
 
 class BooklyApp extends StatelessWidget {
@@ -60,11 +54,8 @@ class BooklyApp extends StatelessWidget {
         routerConfig: AppRouter.router,
         theme:
             ThemeData.dark().copyWith(scaffoldBackgroundColor: kPrimaryColor),
-        locale: DevicePreview.locale(context),
-        builder: DevicePreview.appBuilder,
         debugShowCheckedModeBanner: false,
       ),
     );
   }
 }
-
