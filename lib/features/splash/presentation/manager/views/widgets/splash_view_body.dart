@@ -1,10 +1,13 @@
 import 'package:bookly/constants.dart';
 import 'package:bookly/core/app_router.dart';
+import 'package:bookly/features/home/domain_layer/entities/book_entity.dart';
 import 'package:bookly/features/home/presenation/manager/cubit/shared_data_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hive/hive.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -68,7 +71,7 @@ class _SplashViewBodyState extends State<SplashViewBody> {
             height: 12,
           ),
           ElevatedButton(
-            onPressed: () {
+            onPressed: () async {
               // Check if the input is empty
               if (_controller.text.trim().isEmpty) {
                 // Show an error or feedback
@@ -83,7 +86,10 @@ class _SplashViewBodyState extends State<SplashViewBody> {
               } else {
                 BlocProvider.of<SharedDataCubit>(context).topic =
                     _controller.text;
-
+                var boxFeatured = Hive.box<BookEntity>(kHiveFeaturebBox);
+                var boxNewest = Hive.box<BookEntity>(kHiveNewsetBox);
+                await boxFeatured.clear();
+                await boxNewest.clear();
                 GoRouter.of(context).go(AppRouter.kHomeView);
               }
             },
