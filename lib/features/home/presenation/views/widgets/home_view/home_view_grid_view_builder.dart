@@ -33,6 +33,7 @@ class _HomeViewGridViewBuilderState extends State<HomeViewGridViewBuilder> {
             state is NewestBooksPaginationLoading ||
             state is NewestBooksPaginationFailure) {
           return SliverGrid.builder(
+              itemCount: books.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: widget.crossAxisCount,
                 crossAxisSpacing: 10,
