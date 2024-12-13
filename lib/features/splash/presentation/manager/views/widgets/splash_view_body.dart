@@ -50,6 +50,9 @@ class _SplashViewBodyState extends State<SplashViewBody> {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: TextField(
+              onSubmitted: (value) {
+                 submitTopic(_controller, context);  
+              },
               controller: _controller,
               decoration: InputDecoration(
                 hintText: "Enter a topic you are interested in",
@@ -71,27 +74,8 @@ class _SplashViewBodyState extends State<SplashViewBody> {
             height: 12,
           ),
           ElevatedButton(
-            onPressed: () async {
-              // Check if the input is empty
-              if (_controller.text.trim().isEmpty) {
-                // Show an error or feedback
-
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Center(
-                        child: Text("Please enter a topic before proceeding.")),
-                    backgroundColor: kPrimaryColor,
-                  ),
-                );
-              } else {
-                BlocProvider.of<SharedDataCubit>(context).topic =
-                    _controller.text;
-                var boxFeatured = Hive.box<BookEntity>(kHiveFeaturebBox);
-                var boxNewest = Hive.box<BookEntity>(kHiveNewsetBox);
-                await boxFeatured.clear();
-                await boxNewest.clear();
-                GoRouter.of(context).go(AppRouter.kHomeView);
-              }
+            onPressed: () {
+              submitTopic(_controller, context);
             },
             style: ElevatedButton.styleFrom(
               shape: RoundedRectangleBorder(
@@ -110,5 +94,26 @@ class _SplashViewBodyState extends State<SplashViewBody> {
         ],
       ),
     );
+  }
+}
+
+void submitTopic(
+    TextEditingController textController, BuildContext context) async {
+  if (textController.text.trim().isEmpty) {
+    // Show an error or feedback
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Center(child: Text("Please enter a topic before proceeding.")),
+        backgroundColor: kPrimaryColor,
+      ),
+    );
+  } else {
+    BlocProvider.of<SharedDataCubit>(context).topic = textController.text;
+    var boxFeatured = Hive.box<BookEntity>(kHiveFeaturebBox);
+    var boxNewest = Hive.box<BookEntity>(kHiveNewsetBox);
+    await boxFeatured.clear();
+    await boxNewest.clear();
+    GoRouter.of(context).go(AppRouter.kHomeView);
   }
 }
