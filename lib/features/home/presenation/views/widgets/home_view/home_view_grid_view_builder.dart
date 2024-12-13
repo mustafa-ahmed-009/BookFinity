@@ -29,30 +29,30 @@ class _HomeViewGridViewBuilderState extends State<HomeViewGridViewBuilder> {
         }
       },
       builder: (context, state) {
-        return SliverGrid.builder(
-          
-            itemCount: books.length,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: widget.crossAxisCount,
-              crossAxisSpacing: 10,
-              mainAxisSpacing: 10,
-              mainAxisExtent: MediaQuery.sizeOf(context).height * 0.2,
-            ),
-            itemBuilder: (context, index) {
-              if (state is NewestBooksSuccess ||
-                  state is NewestBooksPaginationLoading ||
-                  state is NewestBooksPaginationFailure) {
+        if (state is NewestBooksSuccess ||
+            state is NewestBooksPaginationLoading ||
+            state is NewestBooksPaginationFailure) {
+          return SliverGrid.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: widget.crossAxisCount,
+                crossAxisSpacing: 10,
+                mainAxisSpacing: 10,
+                mainAxisExtent: MediaQuery.sizeOf(context).height * 0.2,
+              ),
+              itemBuilder: (context, index) {
                 return HomeViewGridBuilderItem(
                   book: books[index],
                 );
-              } else if (state is NewestBooksFailure) {
-                return Text(state.errorMessage);
-              } else {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-            });
+              });
+        } else if (state is NewestBooksFailure) {
+          return SliverToBoxAdapter(child: Text(state.errorMessage));
+        } else {
+          return const SliverToBoxAdapter(
+            child: Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
+        }
       },
     );
   }
