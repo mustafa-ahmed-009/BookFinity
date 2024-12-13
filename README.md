@@ -9,7 +9,7 @@
 * Efficient Pagination: The pagination filter is designed to load new data automatically when the user scrolls through 70% of the list.
 * Search Functionality: Users can search for and preview specific books effortlessly.
 
-
+![Banner](https://github.com/mustafa-ahmed-009/BookFinity/blob/main/screen_shots/screens.png)
 
 
 
